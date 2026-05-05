@@ -1,283 +1,208 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>نوره الناصر | ملف الأعمال الرقمي</title>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;500;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-gold: #c5a059; /* لون ذهبي خفيف ليناسب لمستك في الموضة */
+            --dark-bg: #0f172a;
+            --glass: rgba(255, 255, 255, 0.05);
+        }
 
-<title>نورة الناصر | Creative Portfolio</title>
+        body {
+            font-family: 'Tajawal', sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: white;
+            margin: 0;
+            line-height: 1.6;
+        }
 
-<style>
-:root{
-    --bg:#0a0a0f;
-    --card:#141420;
-    --accent:#7c3aed;
-    --accent2:#22c55e;
-    --text:#f3f4f6;
-    --muted:#a1a1aa;
-}
+        header {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: radial-gradient(circle at center, rgba(197, 160, 89, 0.1) 0%, transparent 70%);
+        }
 
-*{margin:0;padding:0;box-sizing:border-box;font-family:system-ui;}
+        .logo-font {
+            font-size: 5rem;
+            font-weight: 800;
+            letter-spacing: 10px;
+            margin-bottom: 0;
+            color: var(--primary-gold);
+        }
 
-body{
-    background:var(--bg);
-    color:var(--text);
-}
+        .container {
+            width: 85%;
+            margin: auto;
+            padding: 50px 0;
+        }
 
-/* HERO */
-.hero{
-    min-height:100vh;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-    text-align:center;
-    background: radial-gradient(circle at top, #1f1f3a, #0a0a0f);
-    padding:40px;
-}
+        h2 {
+            text-align: center;
+            border-bottom: 2px solid var(--primary-gold);
+            display: inline-block;
+            padding-bottom: 10px;
+            margin-bottom: 40px;
+        }
 
-.hero h1{
-    font-size:3.5rem;
-    background: linear-gradient(90deg,var(--accent),var(--accent2));
-    -webkit-background-clip:text;
-    -webkit-text-fill-color:transparent;
-}
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
 
-.hero p{color:var(--muted);margin-top:10px;font-size:1.2rem}
+        /* تصميم البطاقات الزجاجية */
+        .card {
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 25px;
+            border-radius: 20px;
+            transition: 0.3s;
+            cursor: pointer;
+        }
 
-.badges{
-    margin-top:20px;
-    display:flex;
-    flex-wrap:wrap;
-    justify-content:center;
-    gap:10px;
-}
+        .card:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.1);
+            border-color: var(--primary-gold);
+        }
 
-.badge{
-    border:1px solid #333;
-    padding:8px 14px;
-    border-radius:20px;
-    font-size:0.9rem;
-    color:#ddd;
-}
+        .badge {
+            background: var(--primary-gold);
+            color: black;
+            padding: 5px 12px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
 
-section{
-    padding:70px 20px;
-    max-width:1100px;
-    margin:auto;
-}
+        /* نافذة العرض المنبثقة */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.9);
+            z-index: 1000;
+            justify-content: center; align-items: center;
+        }
 
-h2{
-    font-size:1.8rem;
-    margin-bottom:25px;
-    border-right:4px solid var(--accent);
-    padding-right:10px;
-}
+        .modal-content {
+            background: #1e293b;
+            padding: 40px;
+            border-radius: 20px;
+            max-width: 600px;
+            width: 90%;
+            position: relative;
+        }
 
-/* GRID */
-.grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-    gap:20px;
-}
+        .close-btn {
+            position: absolute;
+            top: 20px; left: 20px;
+            cursor: pointer;
+            font-size: 1.5rem;
+        }
 
-/* CARD */
-.card{
-    background:var(--card);
-    padding:20px;
-    border-radius:15px;
-    transition:0.3s;
-    border:1px solid #222;
-}
-
-.card:hover{
-    transform:translateY(-6px);
-    border-color:var(--accent);
-}
-
-/* IMAGE GRID */
-.gallery{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
-    gap:15px;
-}
-
-.gallery img{
-    width:100%;
-    height:200px;
-    object-fit:cover;
-    border-radius:12px;
-    transition:0.3s;
-}
-
-.gallery img:hover{
-    transform:scale(1.05);
-}
-
-/* POSTS STYLE */
-.post{
-    display:flex;
-    flex-direction:column;
-    gap:10px;
-}
-
-.tag{
-    font-size:0.8rem;
-    color:var(--accent2);
-}
-
-/* CONTACT */
-.contact{
-    text-align:center;
-    padding:40px;
-    background:#111;
-    border-radius:20px;
-}
-
-/* FOOTER */
-footer{
-    text-align:center;
-    padding:30px;
-    color:#666;
-}
-</style>
+        .btn-contact {
+            background: var(--primary-gold);
+            color: black;
+            padding: 12px 30px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            display: inline-block;
+            margin-top: 20px;
+        }
+    </style>
 </head>
-
 <body>
 
-<!-- HERO -->
-<div class="hero">
-    <h1>نورة الناصر</h1>
-    <p>Creative Media · Journalism · Content Design</p>
+    <header>
+        <div class="logo-font">NAN</div>
+        <h1>نوره الناصر</h1>
+        <p>خريجة صحافة وإعلام رقمي | صانعة محتوى رقمي</p>
+    </header>
 
-    <div class="badges">
-        <div class="badge">Content Creator</div>
-        <div class="badge">Digital Journalism</div>
-        <div class="badge">Media Design Thinking</div>
-        <div class="badge">CMA Experience</div>
+    <div class="container">
+        <section id="about">
+            <h2>من أنا</h2>
+            <p>خريجة جامعة الأميرة نورة بنت عبد الرحمن، أمتلك مهارات عملية في التخطيط الإعلامي وصناعة المحتوى، مع خبرة في القيادة الطلابية. نصنع التأثير.. ونقود المحتوى.</p>
+        </section>
+
+        <section id="experience">
+            <h2>الخبرات المهنية</h2>
+            <div class="grid">
+                <div class="card" onclick="openModal('cma')">
+                    <span class="badge">تدريب تعاوني</span>
+                    <h3>هيئة السوق المالية (CMA)</h3>
+                    <p>إدارة الإعلام والتواصل الرقمي - رصد وتحليل الأداء (Meltwater).</p>
+                    <small>اضغط للتفاصيل...</small>
+                </div>
+                <div class="card">
+                    <span class="badge">قيادة</span>
+                    <h3>وحدة القيادة الطلابية</h3>
+                    <p>نائب رئيس الوحدة - إدارة المبادرات وتنسيق المشاريع القيادية.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" style="margin-top: 50px;">
+            <h2>المشاريع والمهارات</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>ملتقى النقد الإعلامي</h3>
+                    <p>قيادة فريق المشروع، تصميم الهوية البصرية، وإدارة الفعالية احترافياً.</p>
+                </div>
+                <div class="card">
+                    <h3>حملة "صحتك بجوالك"</h3>
+                    <p>إنتاج فيديو ترويجي (مونتاج وتعليق صوتي) مع خطة نشر استراتيجية.</p>
+                </div>
+                <div class="card">
+                    <h3>صناعة المحتوى الصحفي</h3>
+                    <p>مقالات منشورة عن "خوارزميات الإعلام" والذكاء الاصطناعي.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" style="text-align: center; margin-top: 80px;">
+            <h2>لنعمل معاً</h2>
+            <p>هل تبحث عن فكر إبداعي وأدوات رقمية حديثة؟</p>
+            <a href="mailto:norahabdul15@gmail.com" class="btn-contact">تواصل معي عبر البريد</a>
+        </section>
     </div>
-</div>
 
-<!-- ABOUT -->
-<section>
-<h2>نبذة احترافية</h2>
-<div class="card">
-<p>
-خريجة صحافة وإعلام رقمي، أعمل على صناعة محتوى يجمع بين التحليل البصري والسرد الإعلامي.
-أركز على تحويل الأفكار إلى محتوى مؤثر بصريًا ونصيًا يخدم الهوية المؤسسية والمنصات الرقمية.
-</p>
-</div>
-</section>
+    <!-- Modal التفاصيل -->
+    <div id="modal-box" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <h3 id="modal-title">التفاصيل</h3>
+            <p id="modal-body"></p>
+        </div>
+    </div>
 
-<!-- EXPERIENCE -->
-<section>
-<h2>الخبرة المهنية</h2>
-<div class="grid">
+    <script>
+        function openModal(type) {
+            const modal = document.getElementById('modal-box');
+            const title = document.getElementById('modal-title');
+            const body = document.getElementById('modal-body');
 
-<div class="card">
-<h3>هيئة السوق المالية</h3>
-<p class="tag">Media & Communication</p>
-<p>المشاركة في إعداد محتوى الحملات الرقمية والتقارير الرسمية.</p>
-</div>
+            if(type === 'cma') {
+                title.innerText = "هيئة السوق المالية (CMA)";
+                body.innerText = "ساهمت في صياغة محتوى التقرير السنوي 2024 وحملة تأهيل الخريجين، بالإضافة إلى تصميم بنرات الموقع الخارجي ورصد وتحليل التفاعل الرقمي.";
+            }
+            modal.style.display = "flex";
+        }
 
-<div class="card">
-<h3>مشاريع إعلامية</h3>
-<p class="tag">University Work</p>
-<p>إنتاج تقارير، مقابلات، وتغطيات إعلامية متنوعة.</p>
-</div>
-
-<div class="card">
-<h3>قيادة طلابية</h3>
-<p class="tag">Leadership</p>
-<p>إدارة محتوى وتنسيق فعاليات إعلامية داخل الجامعة.</p>
-</div>
-
-</div>
-</section>
-
-<!-- PROJECTS -->
-<section>
-<h2>أعمال مختارة</h2>
-<div class="grid">
-
-<div class="card post">
-<h3>تغطية معرض</h3>
-<p class="tag">Journalism</p>
-<p>تغطية إعلامية لفعالية ثقافية في الرياض مع تحليل محتوى بصري.</p>
-</div>
-
-<div class="card post">
-<h3>تحليل محتوى رقمي</h3>
-<p class="tag">Digital Media</p>
-<p>دراسة اتجاهات الإعلام الرقمي في السعودية.</p>
-</div>
-
-<div class="card post">
-<h3>إنتاج محتوى بصري</h3>
-<p class="tag">Design Thinking</p>
-<p>تصميم محتوى بصري لحملات إعلامية تجريبية.</p>
-</div>
-
-</div>
-</section>
-
-<!-- GALLERY -->
-<section>
-<h2>معرض الأعمال</h2>
-
-<div class="gallery">
-<img src="images/1.jpg">
-<img src="images/2.jpg">
-<img src="images/3.jpg">
-<img src="images/4.jpg">
-<img src="images/5.jpg">
-<img src="images/6.jpg">
-</div>
-</section>
-
-<!-- PUBLICATIONS -->
-<section>
-<h2>منشورات ومقالات</h2>
-
-<div class="grid">
-
-<div class="card">
-<h3>مستقبل الإعلام الرقمي</h3>
-<p>تحليل حول تطور المحتوى في السعودية.</p>
-</div>
-
-<div class="card">
-<h3>الذكاء الاصطناعي والإعلام</h3>
-<p>كيف يغير الذكاء الاصطناعي صناعة المحتوى.</p>
-</div>
-
-<div class="card">
-<h3>سرد القصص البصرية</h3>
-<p>أهمية الصورة في الصحافة الحديثة.</p>
-</div>
-
-</div>
-</section>
-
-<!-- SKILLS -->
-<section>
-<h2>المهارات</h2>
-<div class="card">
-<p>Content Writing · Digital Journalism · Media Strategy · Social Media · Research · Visual Thinking</p>
-</div>
-</section>
-
-<!-- CONTACT -->
-<section>
-<div class="contact">
-<h2>تواصل احترافي</h2>
-<p>Email: Norahabdul15@gmail.com</p>
-<p>LinkedIn: available upon request</p>
-</div>
-</section>
-
-<footer>
-© 2026 Noura Alnasser — Creative Portfolio
-</footer>
-
+        function closeModal() {
+            document.getElementById('modal-box').style.display = "none";
+        }
+    </script>
 </body>
 </html>
