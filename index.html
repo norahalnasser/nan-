@@ -3,105 +3,172 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Norah Alnasser | Digital Media Portfolio</title>
+    <title>Norah Alnasser | Interactive Media Portfolio</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;500;700;800&display=swap" rel="stylesheet">
+    <!-- استخدام خطوط Plus Jakarta Sans للأناقة الرقمية -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;500;800&display=swap" rel="stylesheet">
+    <!-- مكتبة Animate.css للحركات الجاهزة -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.min.css"/>
+    
     <style>
-        :root { --vibrant-blue: #0062ff; --soft-blue: #f0f7ff; }
-        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: var(--soft-blue); scroll-behavior: smooth; }
-        .hero-gradient {
-            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
-            clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+        :root { 
+            --electric-blue: #0062ff; 
+            --deep-navy: #0a192f;
         }
-        .glass-effect {
-            background: rgba(255, 255, 255, 0.9);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(59, 130, 246, 0.1);
-            transition: all 0.4s ease;
+        body { 
+            font-family: 'Plus Jakarta Sans', sans-serif; 
+            background-color: #f4f9ff; 
+            overflow-x: hidden;
         }
-        .glass-effect:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 30px rgba(30, 64, 175, 0.1);
-            border-color: #3b82f6;
+
+        /* خلفية متحركة احترافية */
+        .animated-bg {
+            background: linear-gradient(-45deg, #0a192f, #1e3a8a, #3b82f6, #00d4ff);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+        }
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* تأثير الزجاج المتطور */
+        .glass-morphism {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
+        }
+
+        /* تحريك الصور عند التمرير */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* تأثير الزر المشع */
+        .btn-glow {
+            transition: all 0.3s ease;
+            box-shadow: 0 0 0 rgba(0, 98, 255, 0.4);
+        }
+        .btn-glow:hover {
+            box-shadow: 0 0 20px rgba(0, 98, 255, 0.6);
+            transform: scale(1.05);
         }
     </style>
 </head>
-<body class="text-slate-900">
+<body>
 
-    <!-- Hero Section -->
-    <header class="hero-gradient pt-24 pb-40 px-6 text-center text-white">
-        <div class="max-w-4xl mx-auto">
-            <h1 class="text-5xl font-extrabold mb-4 tracking-tight">Norah Alnasser</h1>
-            <p class="text-xl opacity-90 font-light mb-10">Digital Media & Journalism Graduate | Content Strategist</p>
-            <div class="flex justify-center gap-4">
-                <a href="#portfolio" class="bg-white text-blue-700 px-8 py-3 rounded-full font-bold shadow-lg hover:bg-blue-50 transition">View My Work</a>
-                <a href="mailto:norahabdul15@gmail.com" class="bg-blue-900/30 backdrop-blur text-white border border-white/20 px-8 py-3 rounded-full font-bold hover:bg-white/10 transition">Contact Me</a>
-            </div>
+    <!-- قسم العنوان مع خلفية متحركة -->
+    <header class="animated-bg min-h-[60vh] flex items-center justify-center text-white px-6 relative overflow-hidden">
+        <div class="z-10 text-center animate__animated animate__fadeIn">
+            <h1 class="text-7xl font-extrabold tracking-tighter mb-4">NORAH</h1>
+            <p class="text-2xl font-light opacity-80 tracking-widest uppercase mb-8">Digital Media Strategist</p>
+            <a href="#projects" class="bg-white text-blue-900 px-10 py-4 rounded-full font-bold btn-glow inline-block">Explore Portfolio</a>
         </div>
+        <!-- دوائر زينة متحركة -->
+        <div class="absolute top-10 left-10 w-64 h-64 bg-blue-400 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse"></div>
     </header>
 
-    <!-- Content Sections -->
-    <main class="max-w-6xl mx-auto px-6 -mt-20">
+    <main class="max-w-6xl mx-auto px-6 -mt-20 relative z-20">
         
-        <!-- Professional Summary -->
-        <section class="glass-effect rounded-3xl p-10 mb-12 shadow-xl">
-            <h2 class="text-2xl font-bold text-blue-800 mb-6 flex items-center gap-3">
-                <span class="w-1.5 h-8 bg-blue-600 rounded-full"></span>
-                About Me
-            </h2>
-            <p class="text-lg leading-relaxed text-slate-600">
-                A highly motivated Digital Media and Digital Journalism graduate from Princess Nourah University[cite: 1]. I possess practical experience in media content creation, public relations, and student leadership[cite: 1]. I have a proven track record in managing strategic communication campaigns through my cooperative training at the Capital Market Authority (CMA)[cite: 1, 2].
-            </p>
-        </section>
-
-        <!-- Experience & Projects Grid -->
-        <section id="portfolio" class="mb-20">
-            <h2 class="text-3xl font-black text-blue-950 mb-10">Featured Projects & Experience</h2>
-            <div id="gallery" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Automated Gallery via JS -->
+        <!-- بطاقة التعريف -->
+        <section class="glass-morphism rounded-[2.5rem] p-12 mb-20 reveal">
+            <div class="flex flex-col md:flex-row items-center gap-10">
+                <div class="flex-1">
+                    <h2 class="text-blue-600 font-bold uppercase tracking-widest mb-2 text-sm">Introduction</h2>
+                    <h3 class="text-4xl font-extrabold text-navy-900 mb-6 text-blue-950">Professional Vision</h3>
+                    <p class="text-xl text-slate-600 leading-relaxed">
+                        A Digital Media & Journalism graduate from PNU with honors[cite: 1]. Expert in crafting institutional narratives, specialized in strategic communication developed through rigorous training at the **Capital Market Authority (CMA)**.
+                    </p>
+                </div>
             </div>
         </section>
 
+        <!-- معرض الأعمال التفاعلي -->
+        <section id="projects" class="mb-32">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-4xl font-black text-blue-950 mb-4">Showcase</h2>
+                <div class="w-20 h-1.5 bg-blue-600 mx-auto rounded-full"></div>
+            </div>
+
+            <div id="gallery-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                <!-- الصور سيتم حقنها هنا عبر JS -->
+            </div>
+        </section>
+
+        <!-- قسم LinkedIn التفاعلي -->
+        <section class="mb-40 reveal">
+            <div class="bg-blue-900 rounded-[3rem] p-16 text-center text-white relative overflow-hidden shadow-2xl">
+                <div class="relative z-10">
+                    <h3 class="text-4xl font-bold mb-6">Ready to Collaborate?</h3>
+                    <p class="text-blue-200 mb-10 text-lg max-w-xl mx-auto">Let's connect to discuss innovative media strategies and professional opportunities.</p>
+                    <a href="https://www.linkedin.com/in/norah-alnasser-b2026919b" target="_blank" class="bg-[#0077b5] hover:bg-[#005a87] text-white px-12 py-5 rounded-full font-black text-xl transition-all flex items-center gap-4 mx-auto w-fit shadow-xl">
+                        LinkedIn Profile
+                    </a>
+                </div>
+            </div>
+        </section>
     </main>
 
-    <!-- Footer -->
-    <footer class="bg-slate-950 text-white py-16 px-6 text-center">
-        <p class="opacity-50 text-sm mb-6 uppercase tracking-widest">Digital Media Portfolio</p>
-        <p class="font-bold text-blue-400">Norah Alnasser &copy; 2026</p>
-        <div class="mt-4 opacity-40 text-xs">
-            References: -Norah Alnasser-.pdf | Portfolio.pdf[cite: 1, 2]
-        </div>
+    <footer class="bg-white py-12 text-center text-slate-400 text-sm font-medium border-t border-slate-100">
+        NORAH ALNASSER &copy; 2026 | DIGITAL MEDIA & JOURNALISM[cite: 1]
     </footer>
 
     <script>
-        // Automatic Gallery Logic
-        const projects = [
-            { id: "CMA", title: "CMA Co-op Training", desc: "Media & Digital Communication[cite: 1]" },
-            { id: "MediaForum", title: "Saudi Media Forum", desc: "Official Representative[cite: 1, 2]" },
-            { id: "Criticism", title: "Media Criticism Forum", desc: "Leadership & Design[cite: 2]" },
-            { id: "Campaign", title: "Health Campaign", desc: "Content Production[cite: 2]" },
-            { id: "Journalism", title: "Published Articles", desc: "News & Interviews[cite: 1, 2]" },
-            { id: "Design", title: "Infographic Design", desc: "Data Visualization[cite: 2]" }
+        // مصفوفة بيانات الصور المحدثة
+        const projectData = [
+            { id: "1717154562881", title: "CMA Interior", tag: "Institutional Training[cite: 1]" },
+            { id: "1747939033413", title: "Media Production", tag: "Digital Content" },
+            { id: "1752651031137", title: "Council Rep", tag: "Leadership" },
+            { id: "1753305027044", title: "SPA Visit", tag: "Public Relations[cite: 2]" },
+            { id: "1753305711636", title: "Saudi Media Forum", tag: "Professional Networking[cite: 1]" },
+            { id: "1753309213830", title: "Career Day", tag: "Academic Representation[cite: 2]" },
+            { id: "1771790167909", title: "College Events", tag: "Management[cite: 2]" },
+            { id: "1b05dd96-c2f9-45a9-ad89-4d7da378ff7d", title: "Strategic Lab", tag: "Workshop[cite: 1]" },
+            { id: "955641b3-a0d9-4230-b28b-4ea6498f2f31", title: "CMA Branding", tag: "Corporate Identity[cite: 1]" }
         ];
 
-        const gallery = document.getElementById('gallery');
+        const grid = document.getElementById('gallery-grid');
         
-        projects.forEach(p => {
-            gallery.innerHTML += `
-                <div class="glass-effect rounded-2xl overflow-hidden group">
-                    <div class="h-56 bg-blue-100 relative overflow-hidden flex items-center justify-center">
-                        <!-- Replace with your actual images in the /gallery folder -->
-                        <img src="gallery/${p.id}.jpg" alt="${p.title}" 
-                             class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                             onerror="this.src='https://via.placeholder.com/400x300/e0f2fe/0369a1?text=${p.title}'">
+        projectData.forEach((item, index) => {
+            grid.innerHTML += `
+                <div class="group relative reveal overflow-hidden rounded-3xl glass-morphism transition-all duration-500 hover:shadow-2xl shadow-sm border border-white/50" style="transition-delay: ${index * 100}ms">
+                    <div class="h-72 overflow-hidden relative">
+                        <img src="gallery/${item.id}.jpg" alt="${item.title}" 
+                             class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                             onerror="this.src='https://via.placeholder.com/600x400/e0f2fe/0062ff?text=${item.title}'">
+                        <div class="absolute inset-0 bg-gradient-to-t from-blue-950/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
+                            <span class="text-white font-bold text-lg translate-y-4 group-hover:translate-y-0 transition-transform">${item.title}</span>
+                        </div>
                     </div>
                     <div class="p-6">
-                        <h3 class="font-bold text-blue-900 text-lg mb-1">${p.title}</h3>
-                        <p class="text-slate-500 text-sm">${p.desc}</p>
+                        <span class="text-xs font-black text-blue-600 uppercase tracking-widest">${item.tag}</span>
                     </div>
                 </div>
             `;
         });
+
+        // وظيفة الظهور التدريجي عند التمرير (Reveal on Scroll)
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 150;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                }
+            }
+        }
+        window.addEventListener("scroll", reveal);
+        window.onload = reveal;
     </script>
 </body>
 </html>
