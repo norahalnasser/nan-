@@ -1,26 +1,61 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Norah Alnasser | Professional Portfolio</title>
+    <title>Norah Alnasser | Digital Media Portfolio</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- الخط المختار: Plus Jakarta Sans لنظافة التصميم -->
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&family=Noto+Kufi+Arabic:wght@300;600;800&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #fcfdfe; scroll-behavior: smooth; color: #1e293b; }
+        :root {
+            --primary: #0062ff;
+            --dark: #0a192f;
+        }
+        body { 
+            font-family: 'Plus Jakarta Sans', 'Noto Kufi Arabic', sans-serif; 
+            background-color: #fcfdfe; 
+            scroll-behavior: smooth;
+            color: var(--dark);
+        }
         
+        /* تأثير الخلفية المتحركة */
         .hero-vibrant {
-            background: linear-gradient(-45deg, #0a192f, #1e3a8a, #0062ff, #00d4ff);
-            background-size: 400% 400%;
-            animation: gradientMove 10s ease infinite;
-            clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+            background: radial-gradient(circle at top right, #1e3a8a, transparent),
+                        radial-gradient(circle at bottom left, #0062ff, #0a192f);
+            background-size: cover;
+            position: relative;
         }
-        @keyframes gradientMove {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+
+        /* نظام الملاحة الثابت */
+        nav {
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.8);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
         }
+
+        /* شريط الصور اللانهائي */
+        .slider-wrapper { overflow: hidden; padding: 2rem 0; background: #fff; }
+        .slider { display: flex; width: calc(300px * 20); animation: scroll 50s linear infinite; }
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(calc(300px * 10)); }
+        }
+        .slide { width: 300px; height: 400px; padding: 1rem; flex-shrink: 0; }
+        .slide img { 
+            width: 100%; height: 100%; object-fit: cover; 
+            border-radius: 2rem; shadow: 0 20px 40px rgba(0,0,0,0.1); 
+        }
+
+        /* بطاقات الخبرة */
+        .glass-card {
+            background: white;
+            border-radius: 2.5rem;
+            padding: 2.5rem;
+            border: 1px solid #f1f5f9;
+            box-shadow: 0 10px 30px -10px rgba(0,0,0,0.05);
+            transition: all 0.4s ease;
+        }
+        .glass-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px -10px rgba(0,98,255,0.1); }
 
         .wave { display: inline-block; animation: wave-animation 2.5s infinite; transform-origin: 70% 70%; }
         @keyframes wave-animation {
@@ -28,148 +63,136 @@
             20% { transform: rotate(-8deg) }
             40% { transform: rotate(14deg) }
         }
-
-        .slider-container { overflow: hidden; padding: 40px 0; background: #f8fbff; }
-        .slider { display: flex; width: calc(280px * 18); animation: scroll 45s linear infinite; }
-        @keyframes scroll {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(calc(-280px * 9)); }
-        }
-        .slide { width: 280px; height: 380px; padding: 15px; flex-shrink: 0; }
-        .slide img { width: 100%; height: 100%; object-fit: cover; border-radius: 24px; box-shadow: 0 10px 25px rgba(0,0,0,0.05); }
-
-        .reveal { opacity: 0; transform: translateY(20px); transition: all 0.7s ease-out; }
-        .reveal.active { opacity: 1; transform: translateY(0); }
         
-        .glass-card { 
-            background: rgba(255, 255, 255, 0.95); 
-            backdrop-filter: blur(10px); 
-            border: 1px solid #e2e8f0; 
-            transition: transform 0.3s ease;
-        }
-        .section-tag { color: #0062ff; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.75rem; }
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
     </style>
 </head>
 <body>
 
-    <!-- Header -->
-    <header class="hero-vibrant min-h-[60vh] flex flex-col items-center justify-center text-white text-center px-6">
-        <div class="mb-6 flex items-center gap-3 bg-white/10 px-6 py-2 rounded-full backdrop-blur-md">
-            <span class="wave text-2xl">👋</span>
-            <span class="text-lg font-medium">Welcome</span>
+    <!-- القائمة العلوية -->
+    <nav class="fixed top-0 w-full z-50 px-8 py-4 flex justify-between items-center">
+        <div class="font-black text-xl tracking-tighter text-blue-600">NORAH.</div>
+        <div class="hidden md:flex gap-8 font-bold text-sm uppercase tracking-widest">
+            <a href="#about" class="hover:text-blue-600 transition">عني</a>
+            <a href="#experience" class="hover:text-blue-600 transition">الخبرة</a>
+            <a href="#projects" class="hover:text-blue-600 transition">المشاريع</a>
+            <a href="#published" class="hover:text-blue-600 transition">المنشورات</a>
         </div>
-        <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight mb-4">NORAH ALNASSER</h1>
-        <p class="text-lg md:text-xl font-light tracking-[0.4em] opacity-90">DIGITAL MEDIA & JOURNALISM</p>
+    </nav>
+
+    <!-- القسم الأول: الافتتاحية والتعريف -->
+    <header class="hero-vibrant min-h-screen flex items-center justify-center text-white text-center px-6 relative pt-20">
+        <div class="z-10 max-w-4xl">
+            <div class="mb-6 flex items-center justify-center gap-3 bg-white/10 w-fit mx-auto px-6 py-2 rounded-full backdrop-blur-md">
+                <span class="wave text-2xl">👋</span>
+                <span class="text-lg font-medium tracking-wide">Welcome, I am Norah Alnasser</span>
+            </div>
+            <h1 class="text-6xl md:text-8xl font-extrabold tracking-tighter mb-6 leading-tight">صناعة المحتوى<br><span class="text-blue-400">برؤية استراتيجية</span></h1>
+            <p id="about" class="text-xl md:text-2xl font-light opacity-80 max-w-2xl mx-auto leading-relaxed mb-10">
+                خريجة إعلام رقمي وصحافة من جامعة الأميرة نورة بنت عبدالرحمن بمرتبة الشرف الثانية. متخصصة في بناء السرديات المؤسسية وإدارة الاتصال الرقمي باحترافية.
+            </p>
+            <div class="flex gap-4 justify-center">
+                <a href="#experience" class="bg-white text-blue-900 px-10 py-4 rounded-full font-bold shadow-xl hover:scale-105 transition">استكشاف الأعمال</a>
+            </div>
+        </div>
     </header>
 
-    <main class="max-w-5xl mx-auto px-6 -mt-16 pb-24">
+    <main class="max-w-6xl mx-auto px-6 -mt-20 relative z-20 pb-32">
 
-        <!-- القسم 1: الخبرة العملية (CMA) -->
-        <section class="glass-card rounded-[2.5rem] p-10 mb-12 shadow-2xl border-t-4 border-blue-600 reveal active">
-            <span class="section-tag">Working Experience</span>
-            <h2 class="text-3xl font-extrabold text-slate-900 mt-2 mb-6 text-right">الخبرة العملية والأدوات المهنية</h2>
-            <div class="border-r-4 border-blue-100 pr-6 mb-8 text-right">
-                <h3 class="text-xl font-bold text-blue-900">هيئة السوق المالية (CMA)</h3>
-                <p class="text-slate-500 font-medium">إدارة الإعلام والتواصل الرقمي (يناير - مايو 2025)</p>
+        <!-- القسم الثاني: الخبرة العملية (CMA) -->
+        <section id="experience" class="glass-card mb-12 reveal border-r-8 border-blue-600">
+            <div class="flex flex-col md:flex-row justify-between items-start mb-8">
+                <div class="text-right">
+                    <span class="text-blue-600 font-black text-xs uppercase tracking-[0.2em]">Work Experience</span>
+                    <h2 class="text-3xl font-extrabold mt-2">التدريب في هيئة السوق المالية (CMA)</h2>
+                    <p class="text-slate-500 font-bold mt-1 text-lg">إدارة الإعلام والتواصل الرقمي[cite: 1]</p>
+                </div>
+                <div class="bg-blue-50 text-blue-700 px-6 py-2 rounded-full font-bold mt-4 md:mt-0">2025</div>
             </div>
-            <ul class="space-y-4 text-right dir-rtl">
-                <li class="text-slate-600"><strong class="text-blue-950">صناعة المحتوى:</strong> إعداد محتوى الحملات الرقمية كحملة التقرير السنوي 2024 وحملة برنامج تأهيل الخريجين.</li>
-                <li class="text-slate-600"><strong class="text-blue-950">الرصد والتحليل:</strong> استخدام أداة <strong>Meltwater</strong> لتحليل أداء الحسابات وقياس أثر التفاعل.</li>
-                <li class="text-slate-600"><strong class="text-blue-950">التنفيذ الفني:</strong> تصميم بنرات الموقع الخارجي وجدولة المحتوى لضمان الدقة في الوصول.</li>
-            </ul>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-right">
+                <div class="p-6 bg-slate-50 rounded-3xl">
+                    <h4 class="font-black text-blue-900 mb-2">صناعة المحتوى</h4>
+                    <p class="text-slate-600 text-sm leading-relaxed">إعداد محتوى حملة التقرير السنوي 2024 وحملة برنامج تأهيل الخريجين[cite: 1].</p>
+                </div>
+                <div class="p-6 bg-slate-50 rounded-3xl">
+                    <h4 class="font-black text-blue-900 mb-2">الرصد والتحليل</h4>
+                    <p class="text-slate-600 text-sm leading-relaxed">تحليل أداء الحسابات باستخدام أداة <strong>Meltwater</strong> وإعداد تقارير التفاعل[cite: 1].</p>
+                </div>
+                <div class="p-6 bg-slate-50 rounded-3xl">
+                    <h4 class="font-black text-blue-900 mb-2">التنفيذ الفني</h4>
+                    <p class="text-slate-600 text-sm leading-relaxed">تصميم بنرات الموقع الخارجي للهيئة وجدولة المحتوى بدقة عالية[cite: 1].</p>
+                </div>
+            </div>
         </section>
 
-        <!-- القسم 2: التمثيل الإعلامي -->
-        <section class="glass-card rounded-[2.5rem] p-10 mb-12 shadow-sm reveal">
-            <span class="section-tag">Media Representation</span>
-            <h2 class="text-3xl font-extrabold text-slate-900 mt-2 mb-6 text-right">التمثيل الإعلامي وإدارة الأجنحة</h2>
-            <p class="text-slate-600 leading-relaxed text-right">
-                شاركت كممثلة رسمية في فعاليات بارزة منها <strong>المنتدى السعودي للإعلام</strong>، حيث توليت مسؤولية التعريف بالمبادرات وتسويقها، مما عزز مهاراتي في الإقناع، التواصل الجماهيري، وإدارة الحضور الميداني بفعالية.
-            </p>
-        </section>
-
-        <!-- Visual Showcase (Photos) -->
-        <div class="slider-container mb-12 rounded-[3rem]">
-            <div class="slider">
-                <!-- الـ JavaScript سيضع الصور هنا -->
-            </div>
+        <!-- القسم الثالث: المشاريع والقيادة -->
+        <div id="projects" class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+            <section class="glass-card reveal">
+                <h3 class="text-2xl font-black mb-4 text-right text-blue-900">التمثيل الإعلامي</h3>
+                <p class="text-slate-600 text-right leading-relaxed">
+                    تمثيل رسمي لأجنحة تعريفية في فعاليات جامعية بارزة، منها <strong>المنتدى السعودي للإعلام</strong>، مع مهارات عالية في الإقناع والتواصل الميداني[cite: 1].
+                </p>
+            </section>
+            <section class="glass-card reveal">
+                <h3 class="text-2xl font-black mb-4 text-right text-blue-900">القيادة والإدارة</h3>
+                <p class="text-slate-600 text-right leading-relaxed">
+                    قيادة فريق ملتقى النقد الإعلامي، تصميم الهوية البصرية، وتقديم ضيوف الملتقى مثل <strong>ياسر الجنيد وعبدالله الحسيني</strong>[cite: 1].
+                </p>
+            </section>
         </div>
 
-        <!-- القسم 3: القيادة الإعلامية -->
-        <section class="glass-card rounded-[2.5rem] p-10 mb-12 shadow-sm reveal">
-            <span class="section-tag">Leadership</span>
-            <h2 class="text-3xl font-extrabold text-slate-900 mt-2 mb-6 text-right">القيادة الإعلامية وإدارة الفعاليات</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 dir-rtl">
-                <div class="text-right">
-                    <p class="text-slate-600 leading-relaxed">
-                        قدت فريق مشروع <strong>ملتقى النقد الإعلامي</strong>، صممت الهوية البصرية والشعار، وقدمت الضيوف الإعلاميين مثل ياسر الجنيد وعبدالله الحسيني أمام الجمهور باحترافية عالية[cite: 1].
-                    </p>
-                </div>
-                <div class="flex flex-wrap gap-2 justify-start">
-                    <span class="px-4 py-2 bg-blue-50 text-blue-700 rounded-full text-xs font-bold">Event Management</span>
-                    <span class="px-4 py-2 bg-blue-50 text-blue-700 rounded-full text-xs font-bold">Branding</span>
-                    <span class="px-4 py-2 bg-blue-50 text-blue-700 rounded-full text-xs font-bold">Public Speaking</span>
-                </div>
+        <!-- شريط الصور المتحرك (حل مشكلة الصور) -->
+        <section class="slider-wrapper rounded-[3rem] mb-12 shadow-inner">
+            <div class="slider" id="main-slider">
+                <!-- الصور ستتكرر هنا تلقائياً -->
             </div>
         </section>
 
-        <!-- القسم 4: الحملات الرقمية -->
-        <section class="glass-card rounded-[2.5rem] p-10 mb-12 shadow-sm reveal">
-            <span class="section-tag">Digital Campaigns</span>
-            <h2 class="text-3xl font-extrabold text-slate-900 mt-2 mb-6 text-right">إدارة الحملات وإنتاج المحتوى</h2>
-            <div class="bg-blue-50 p-8 rounded-3xl text-right">
-                <h4 class="font-bold text-blue-900 mb-2">حملة "صحتك بجوالك"</h4>
-                <p class="text-slate-600">إنتاج الفيديو الترويجي (مونتاج وتسجيل صوتي)، وإعداد خطة النشر والملخص التنفيذي الاستراتيجي للحملة بالتعاون مع الجامعة[cite: 1].</p>
-            </div>
-        </section>
-
-        <!-- Published Works Section -->
-        <section class="mb-20 reveal">
-            <h2 class="text-2xl font-black text-slate-900 mb-8 text-center uppercase tracking-widest">Published Works</h2>
+        <!-- القسم الرابع: الأعمال المنشورة -->
+        <section id="published" class="glass-card mb-12 reveal">
+            <h2 class="text-3xl font-black text-center mb-10 text-blue-950">الأعمال المنشورة</h2>
             <div class="space-y-4">
-                <a href="https://shahdnow.sa/240411/" target="_blank" class="glass-card p-6 rounded-2xl flex justify-between items-center hover:border-blue-600 transition-all shadow-sm">
-                    <span class="font-bold">مستقبل العمارة (حوار صحفي)[cite: 1]</span>
-                    <span class="text-blue-600">Read</span>
+                <a href="https://shahdnow.sa/240411/" target="_blank" class="flex justify-between items-center p-6 bg-slate-50 rounded-2xl hover:bg-blue-50 transition border-r-4 border-transparent hover:border-blue-600 group text-right">
+                    <span class="font-bold text-lg group-hover:text-blue-700">حوار صحفي: مستقبل العمارة[cite: 1]</span>
+                    <span class="text-blue-600">قراءة →</span>
                 </a>
-                <a href="https://shahdnow.sa/343274/" target="_blank" class="glass-card p-6 rounded-2xl flex justify-between items-center hover:border-blue-600 transition-all shadow-sm">
-                    <span class="font-bold">معرض الدون بالرياض (خبر صحفي)[cite: 1]</span>
-                    <span class="text-blue-600">Read</span>
+                <a href="https://shahdnow.sa/343274/" target="_blank" class="flex justify-between items-center p-6 bg-slate-50 rounded-2xl hover:bg-blue-50 transition border-r-4 border-transparent hover:border-blue-600 group text-right">
+                    <span class="font-bold text-lg group-hover:text-blue-700">خبر صحفي: معرض الدون بالرياض[cite: 1]</span>
+                    <span class="text-blue-600">قراءة →</span>
                 </a>
-                <a href="https://shahdnow.sa/336421/" target="_blank" class="glass-card p-6 rounded-2xl flex justify-between items-center hover:border-blue-600 transition-all shadow-sm">
-                    <span class="font-bold">مقال يوم العلم (راية لا تنكس)[cite: 1]</span>
-                    <span class="text-blue-600">Read</span>
+                <a href="https://shahdnow.sa/336421/" target="_blank" class="flex justify-between items-center p-6 bg-slate-50 rounded-2xl hover:bg-blue-50 transition border-r-4 border-transparent hover:border-blue-600 group text-right">
+                    <span class="font-bold text-lg group-hover:text-blue-700">مقال: يوم العلم "راية لا تنكس"[cite: 1]</span>
+                    <span class="text-blue-600">قراءة →</span>
                 </a>
             </div>
         </section>
 
-        <!-- LinkedIn Contact -->
-        <section class="text-center reveal">
-            <div class="bg-blue-950 rounded-[3rem] p-12 text-white">
-                <h3 class="text-2xl font-bold mb-8 tracking-tight">Connect for Opportunities</h3>
-                <a href="https://www.linkedin.com/in/norah-alnasser-b2026919b" target="_blank" class="bg-blue-600 text-white px-12 py-4 rounded-full font-bold hover:bg-blue-500 transition-all inline-block shadow-lg">LinkedIn Profile</a>
+        <!-- التواصل -->
+        <section class="text-center mt-20 reveal">
+            <div class="bg-blue-900 rounded-[3rem] p-16 text-white shadow-3xl">
+                <h3 class="text-3xl font-bold mb-8 italic">Ready for the next big impact?</h3>
+                <a href="https://www.linkedin.com/in/norah-alnasser-b2026919b" target="_blank" class="bg-white text-blue-900 px-12 py-4 rounded-full font-black text-lg hover:shadow-2xl transition inline-block">LinkedIn Profile[cite: 1]</a>
             </div>
         </section>
     </main>
 
-    <footer class="py-12 text-center text-slate-400 text-sm font-medium">
-        © 2026 NORAH ALNASSER | PORTFOLIO[cite: 1]
-    </footer>
-
     <script>
-        // مصفوفة الصور بناءً على الأرقام التي تملكها Norah
+        // التأكد من أن أسماء الصور مطابقة لما تملكين
         const photoIDs = ["1717154562881", "1747939033413", "1752651031137", "1753305027044", "1753305711636", "1753309213830", "1771790167909", "1b05dd96-c2f9-45a9-ad89-4d7da378ff7d", "955641b3-a0d9-4230-b28b-4ea6498f2f31"];
-        const slider = document.querySelector('.slider');
+        const slider = document.getElementById('main-slider');
         
         // تكرار الصور لضمان الحركة المستمرة
         [...photoIDs, ...photoIDs].forEach(id => {
             slider.innerHTML += `
                 <div class="slide">
-                    <img src="gallery/${id}.jpg" onerror="this.src='https://via.placeholder.com/280x380/f0f9ff/0062ff?text=Visual+Work'">
+                    <img src="gallery/${id}.jpg" alt="Work Sample" 
+                         onerror="this.src='https://via.placeholder.com/300x400/eef6ff/0062ff?text=Visual+Work'">
                 </div>
             `;
         });
 
-        // تفعيل الظهور التدريجي عند التمرير
+        // مراقب التمرير لتفعيل الحركات
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) entry.target.classList.add('active');
