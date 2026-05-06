@@ -1,79 +1,107 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>نوره الناصر | معرض الأعمال</title>
+    <title>Norah Alnasser | Digital Media Portfolio</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;500;700;800&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Tajawal', sans-serif; background-color: #f8fbff; }
-        .blue-gradient { background: linear-gradient(135deg, #2563eb 0%, #3b82f6 100%); }
-        .gallery-card img { transition: transform 0.3s ease; }
-        .gallery-card:hover img { transform: scale(1.05); }
+        :root { --vibrant-blue: #0062ff; --soft-blue: #f0f7ff; }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: var(--soft-blue); scroll-behavior: smooth; }
+        .hero-gradient {
+            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+            clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+        }
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(59, 130, 246, 0.1);
+            transition: all 0.4s ease;
+        }
+        .glass-effect:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 30px rgba(30, 64, 175, 0.1);
+            border-color: #3b82f6;
+        }
     </style>
 </head>
-<body>
+<body class="text-slate-900">
 
-    <!-- الهيدر -->
-    <header class="blue-gradient text-white py-16 px-6 text-center shadow-lg mb-10">
-        <h1 class="text-4xl font-bold mb-3">نوره الناصر</h1>
-        <p class="text-lg opacity-90">خريجة إعلام رقمي وصحافة | صانعة محتوى</p>
+    <!-- Hero Section -->
+    <header class="hero-gradient pt-24 pb-40 px-6 text-center text-white">
+        <div class="max-w-4xl mx-auto">
+            <h1 class="text-5xl font-extrabold mb-4 tracking-tight">Norah Alnasser</h1>
+            <p class="text-xl opacity-90 font-light mb-10">Digital Media & Journalism Graduate | Content Strategist</p>
+            <div class="flex justify-center gap-4">
+                <a href="#portfolio" class="bg-white text-blue-700 px-8 py-3 rounded-full font-bold shadow-lg hover:bg-blue-50 transition">View My Work</a>
+                <a href="mailto:norahabdul15@gmail.com" class="bg-blue-900/30 backdrop-blur text-white border border-white/20 px-8 py-3 rounded-full font-bold hover:bg-white/10 transition">Contact Me</a>
+            </div>
+        </div>
     </header>
 
-    <!-- نبذة سريعة -->
-    <section class="max-w-5xl mx-auto px-6 mb-16">
-        <div class="bg-white p-8 rounded-2xl shadow-sm border-r-8 border-blue-600">
-            <h2 class="text-2xl font-bold text-blue-900 mb-4">الملخص المهني</h2>
-            <p class="text-gray-700 leading-relaxed text-lg">
-                خريجة إعلام رقمي طموحة، أمتلك خبرة عملية في صناعة المحتوى الإعلامي والعلاقات العامة، مع سجل حافل في إدارة الحملات الاستراتيجية خلال تدريبي في هيئة السوق المالية (CMA).
-            </p>
-        </div>
-    </section>
-
-    <!-- معرض الصور التلقائي -->
-    <section class="max-w-6xl mx-auto px-6 pb-20">
-        <h2 class="text-3xl font-bold text-blue-900 mb-8 text-center">معرض الصور والأعمال</h2>
+    <!-- Content Sections -->
+    <main class="max-w-6xl mx-auto px-6 -mt-20">
         
-        <!-- هذا هو المكان الذي ستظهر فيه الصور تلقائياً -->
-        <div id="image-gallery" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            <!-- سيقوم الكود بالأسفل بتعبئة هذا الجزء -->
-            <p class="text-center col-span-full text-gray-500">جاري تحميل معرض الأعمال...</p>
+        <!-- Professional Summary -->
+        <section class="glass-effect rounded-3xl p-10 mb-12 shadow-xl">
+            <h2 class="text-2xl font-bold text-blue-800 mb-6 flex items-center gap-3">
+                <span class="w-1.5 h-8 bg-blue-600 rounded-full"></span>
+                About Me
+            </h2>
+            <p class="text-lg leading-relaxed text-slate-600">
+                A highly motivated Digital Media and Digital Journalism graduate from Princess Nourah University[cite: 1]. I possess practical experience in media content creation, public relations, and student leadership[cite: 1]. I have a proven track record in managing strategic communication campaigns through my cooperative training at the Capital Market Authority (CMA)[cite: 1, 2].
+            </p>
+        </section>
+
+        <!-- Experience & Projects Grid -->
+        <section id="portfolio" class="mb-20">
+            <h2 class="text-3xl font-black text-blue-950 mb-10">Featured Projects & Experience</h2>
+            <div id="gallery" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Automated Gallery via JS -->
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-950 text-white py-16 px-6 text-center">
+        <p class="opacity-50 text-sm mb-6 uppercase tracking-widest">Digital Media Portfolio</p>
+        <p class="font-bold text-blue-400">Norah Alnasser &copy; 2026</p>
+        <div class="mt-4 opacity-40 text-xs">
+            References: -Norah Alnasser-.pdf | Portfolio.pdf[cite: 1, 2]
         </div>
-    </section>
+    </footer>
 
     <script>
-        // مصفوفة بأسماء الصور الموجودة في ملفاتك (مثل الملفات المرفقة)
-        // فقط أضيفي اسم الصورة هنا وستظهر فوراً في الموقع
-        const images = [
-            "photo1.jpg", 
-            "photo2.png", 
-            "certificate.jpg",
-            "infographic1.jpg",
-            "project-cover.jpg"
+        // Automatic Gallery Logic
+        const projects = [
+            { id: "CMA", title: "CMA Co-op Training", desc: "Media & Digital Communication[cite: 1]" },
+            { id: "MediaForum", title: "Saudi Media Forum", desc: "Official Representative[cite: 1, 2]" },
+            { id: "Criticism", title: "Media Criticism Forum", desc: "Leadership & Design[cite: 2]" },
+            { id: "Campaign", title: "Health Campaign", desc: "Content Production[cite: 2]" },
+            { id: "Journalism", title: "Published Articles", desc: "News & Interviews[cite: 1, 2]" },
+            { id: "Design", title: "Infographic Design", desc: "Data Visualization[cite: 2]" }
         ];
 
-        const galleryContainer = document.getElementById('image-gallery');
-        galleryContainer.innerHTML = ''; // تفريغ النص المؤقت
-
-        images.forEach(imgName => {
-            const card = `
-                <div class="gallery-card bg-white rounded-xl shadow-md overflow-hidden border border-blue-100">
-                    <img src="gallery/${imgName}" alt="عمل من أعمال نوره" class="w-full h-64 object-cover" onerror="this.parentElement.style.display='none'">
-                    <div class="p-4">
-                        <p class="text-blue-800 font-medium text-center">${imgName.split('.')[0]}</p>
+        const gallery = document.getElementById('gallery');
+        
+        projects.forEach(p => {
+            gallery.innerHTML += `
+                <div class="glass-effect rounded-2xl overflow-hidden group">
+                    <div class="h-56 bg-blue-100 relative overflow-hidden flex items-center justify-center">
+                        <!-- Replace with your actual images in the /gallery folder -->
+                        <img src="gallery/${p.id}.jpg" alt="${p.title}" 
+                             class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                             onerror="this.src='https://via.placeholder.com/400x300/e0f2fe/0369a1?text=${p.title}'">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-bold text-blue-900 text-lg mb-1">${p.title}</h3>
+                        <p class="text-slate-500 text-sm">${p.desc}</p>
                     </div>
                 </div>
             `;
-            galleryContainer.innerHTML += card;
         });
     </script>
-
-    <footer class="bg-blue-900 text-white py-8 text-center">
-        <p>نوره الناصر - 2026</p>
-        <div class="mt-2 text-sm opacity-70">
-            مرجع: ‎⁨-نوره الناصر-⁩.pdf[cite: 1] | ملف الأعمال .pdf[cite: 2]
-        </div>
-    </footer>
 </body>
 </html>
