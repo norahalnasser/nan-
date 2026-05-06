@@ -3,166 +3,160 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>نورة الناصر | Norah Alnasser</title>
+    <title>نورة الناصر | Portfolio</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@400;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;800&family=Noto+Kufi+Arabic:wght@400;900&display=swap" rel="stylesheet">
     <style>
-        body { 
-            font-family: 'Noto Kufi Arabic', sans-serif; 
-            background-color: #f0fdfa; /* لون تيفاني فاتح جداً للخلفية */
-            scroll-behavior: smooth;
-        }
+        :root { --tiffany: #14b8a6; --dark-teal: #0f766e; }
+        body { font-family: 'Noto Kufi Arabic', 'Plus Jakarta Sans', sans-serif; background-color: #f0fdfa; overflow-x: hidden; }
         
-        /* التدرج التيفاني المبهر */
-        .tiffany-theme {
-            background: linear-gradient(135deg, #0d9488, #14b8a6, #2dd4bf);
-            background-size: 400% 400%;
-            animation: tiffanyAnimation 12s ease infinite;
+        /* تأثيرات بصرية تفاعلية */
+        .glow-sphere {
+            position: absolute; width: 400px; height: 400px;
+            background: radial-gradient(circle, rgba(20,184,166,0.3) 0%, transparent 70%);
+            filter: blur(50px); z-index: -1; animation: float 10s infinite alternate;
         }
-        @keyframes tiffanyAnimation {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
+        @keyframes float { from { transform: translate(0,0); } to { transform: translate(50px, 100px); } }
 
-        nav { backdrop-filter: blur(10px); background: rgba(255, 255, 255, 0.8); border-bottom: 2px solid #14b8a6; }
+        /* شريط الصور الاحترافي */
+        .slider-wrapper { overflow: hidden; padding: 2rem 0; position: relative; }
+        .slider { display: flex; width: calc(300px * 20); animation: slideScroll 30s linear infinite; }
+        .slider:hover { animation-play-state: paused; } /* يتوقف عند مرور الماوس مبهر! */
         
-        .glass-card {
-            background: white;
-            border-radius: 2rem;
-            border: 1px solid #ccfbf1;
-            box-shadow: 0 10px 30px -5px rgba(20, 184, 166, 0.1);
-            transition: all 0.3s ease;
+        .slide { width: 300px; height: 400px; padding: 15px; transition: transform 0.5s; }
+        .slide:hover { transform: scale(1.05) rotate(2deg); }
+        .slide img { 
+            width: 100%; height: 100%; object-fit: cover; border-radius: 2rem; 
+            border: 4px solid white; box-shadow: 0 20px 40px rgba(0,0,0,0.1);
         }
-        .glass-card:hover { transform: translateY(-5px); border-color: #14b8a6; }
 
-        /* شريط الصور */
-        .slider-wrapper { overflow: hidden; padding: 2rem 0; }
-        .slider { display: flex; width: calc(300px * 20); animation: slideScroll 45s linear infinite; }
-        @keyframes slideScroll {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(calc(300px * 10)); }
+        /* بطاقات مائلة وتفاعلية */
+        .interactive-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            border-radius: 2.5rem;
+            border: 1px solid white;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
-        .slide { width: 300px; height: 400px; padding: 10px; flex-shrink: 0; }
-        .slide img { width: 100%; height: 100%; object-fit: cover; border-radius: 1.5rem; border: 3px solid #14b8a6; }
+        .interactive-card:hover { transform: translateY(-15px) rotate(-1deg); background: white; shadow: 0 30px 60px rgba(20,184,166,0.2); }
 
-        .section-title { color: #0f766e; font-weight: 900; border-right: 5px solid #14b8a6; padding-right: 15px; margin-bottom: 2rem; }
+        .eng-badge { font-family: 'Plus Jakarta Sans'; font-weight: 800; font-size: 0.7rem; letter-spacing: 0.1em; color: var(--tiffany); text-transform: uppercase; }
     </style>
 </head>
 <body>
 
-    <!-- القائمة -->
-    <nav class="fixed top-0 w-full z-50 px-6 py-4 flex justify-between items-center">
-        <div class="font-black text-xl text-teal-700">NORAH ALNASSER</div>
-        <div class="hidden md:flex gap-8 font-bold text-teal-800 text-sm">
-            <a href="#hero">الرئيسية</a>
-            <a href="#exp">الخبرة</a>
-            <a href="#projects">المشاريع</a>
-            <a href="#campaigns">الحملات</a>
+    <div class="glow-sphere" style="top: 10%; right: -10%;"></div>
+    <div class="glow-sphere" style="bottom: 10%; left: -10%;"></div>
+
+    <nav class="fixed top-0 w-full z-50 px-8 py-6 flex justify-between items-center backdrop-blur-md border-b border-teal-100">
+        <div class="font-black text-2xl text-teal-700 tracking-tighter">NORAH. <span class="eng-badge italic">Portfolio</span></div>
+        <div class="hidden md:flex gap-8 font-bold text-teal-900">
+            <a href="#about" class="hover:text-teal-500 transition">About</a>
+            <a href="#exp" class="hover:text-teal-500 transition">Experience</a>
+            <a href="#projects" class="hover:text-teal-500 transition">Projects</a>
         </div>
     </nav>
 
-    <!-- الافتتاحية التعريفية -->
-    <header id="hero" class="tiffany-theme min-h-screen flex items-center justify-center text-white text-center px-6">
-        <div class="max-w-3xl">
-            <h1 class="text-6xl md:text-8xl font-black mb-6 drop-shadow-lg">نورة الناصر</h1>
-            <p class="text-xl md:text-2xl font-light leading-relaxed mb-10 bg-black/10 p-6 rounded-2xl backdrop-blur-sm">
-                خريجة إعلام رقمي وصحافة من جامعة الأميرة نورة بنت عبدالرحمن بمرتبة الشرف الثانية.
+    <!-- الهيرو: الافتتاحية -->
+    <header id="about" class="min-h-screen flex items-center justify-center text-center px-6 relative">
+        <div class="max-w-4xl">
+            <div class="eng-badge mb-4">Digital Media & Journalism Graduate</div>
+            <h1 class="text-6xl md:text-9xl font-black text-teal-900 mb-6 tracking-tight">نورة الناصر</h1>
+            <p class="text-xl md:text-2xl text-teal-700 leading-relaxed max-w-2xl mx-auto font-light">
+                خريجة بمرتبة الشرف الثانية، متخصصة في صناعة المحتوى الاستراتيجي والاتصال المؤسسي الرقمي.
             </p>
-            <a href="#exp" class="bg-white text-teal-700 px-12 py-4 rounded-full font-black text-lg shadow-xl hover:bg-teal-50 transition">تصفح الملف المهني</a>
+            <div class="mt-10 flex gap-4 justify-center">
+                <a href="#exp" class="bg-teal-600 text-white px-10 py-4 rounded-full font-bold hover:shadow-2xl transition">View Work</a>
+            </div>
         </div>
     </header>
 
-    <main class="max-w-6xl mx-auto px-6 -mt-20 relative z-10 pb-32">
+    <main class="max-w-6xl mx-auto px-6 pb-32">
 
-        <!-- القسم 1: الخبرة العملية -->
-        <section id="exp" class="glass-card p-10 mb-12 shadow-2xl">
-            <h2 class="section-title text-3xl">الخبرة العملية والأدوات المهنية</h2>
-            <div class="mb-10">
-                <h3 class="text-2xl font-bold text-teal-800 mb-2">التدريب في هيئة السوق المالية (CMA)</h3>
-                <p class="text-teal-600 font-bold mb-6">إدارة الإعلام والتواصل الرقمي</p>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-right">
-                    <div class="bg-teal-50 p-6 rounded-2xl">
-                        <h4 class="font-bold text-teal-900 mb-3">تخطيط وصناعة المحتوى</h4>
-                        <p class="text-sm text-teal-800 leading-relaxed">ساهمت في إعداد وصياغة محتوى الحملات الإعلامية الرقمية (تغريدات ومنشورات)، بما في ذلك حملة التقرير السنوي للهيئة 2024 وحملة برنامج تأهيل الخريجين.</p>
+        <!-- قسم الخبرة -->
+        <section id="exp" class="mb-24">
+            <div class="flex items-center gap-4 mb-12">
+                <div class="h-1 w-20 bg-teal-500"></div>
+                <h2 class="text-3xl font-black text-teal-900">Experience <span class="text-teal-500 italic">&</span> Tools</h2>
+            </div>
+
+            <div class="interactive-card p-12 relative overflow-hidden">
+                <div class="absolute top-0 left-0 bg-teal-500 text-white px-6 py-2 rounded-br-2xl eng-badge">CMA Training</div>
+                <h3 class="text-2xl font-bold text-teal-800 mt-6 mb-2">هيئة السوق المالية - إدارة الإعلام</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-10">
+                    <div class="p-6 bg-teal-50/50 rounded-3xl border border-teal-100">
+                        <div class="text-3xl mb-4">✍️</div>
+                        <h4 class="font-black text-teal-900 mb-2">Content Strategy</h4>
+                        <p class="text-sm leading-relaxed">إعداد وصياغة محتوى الحملات الإعلامية الرقمية، مثل حملة التقرير السنوي 2024 وحملة برنامج تأهيل الخريجين.</p>
                     </div>
-                    <div class="bg-teal-50 p-6 rounded-2xl">
-                        <h4 class="font-bold text-teal-900 mb-3">التنفيذ والمتابعة</h4>
-                        <p class="text-sm text-teal-800 leading-relaxed">شاركت في تنفيذ الخطط الإعلامية وجدولة المحتوى لضمان وصول الرسائل الاتصالية للجمهور المستهدف بدقة.</p>
+                    <div class="p-6 bg-teal-50/50 rounded-3xl border border-teal-100">
+                        <div class="text-3xl mb-4">📊</div>
+                        <h4 class="font-black text-teal-900 mb-2">Digital Analytics</h4>
+                        <p class="text-sm leading-relaxed">رصد وتحليل الأداء باستخدام (Meltwater)، وإعداد تقارير دورية لقياس التفاعل وأثر الحملات.</p>
                     </div>
-                    <div class="bg-teal-50 p-6 rounded-2xl">
-                        <h4 class="font-bold text-teal-900 mb-3">الرصد والتحليل الرقمي</h4>
-                        <p class="text-sm text-teal-800 leading-relaxed">رصد وتحليل أداء حسابات الهيئة على منصات التواصل الاجتماعي باستخدام أدوات احترافية مثل (Meltwater)، وإعداد تقارير أداء دورية لقياس التفاعل وأثر الحملات وتصميم بنرات الموقع الخارجي للهيئه.</p>
+                    <div class="p-6 bg-teal-50/50 rounded-3xl border border-teal-100">
+                        <div class="text-3xl mb-4">🎨</div>
+                        <h4 class="font-black text-teal-900 mb-2">Visual Execution</h4>
+                        <p class="text-sm leading-relaxed">تنفيذ الخطط الإعلامية، جدولة المحتوى، وتصميم بنرات الموقع الخارجي للهيئة.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- شريط الصور المتحرك -->
-        <div class="slider-wrapper mb-12">
-            <div class="slider" id="imageSlider"></div>
+        <!-- شريط الصور -->
+        <div class="slider-wrapper mb-24">
+            <div class="slider" id="dynamicSlider">
+                <!-- الصور تظهر هنا تلقائياً -->
+            </div>
         </div>
 
-        <!-- القسم 2: المشاريع والمهارات -->
-        <section id="projects" class="glass-card p-10 mb-12">
-            <h2 class="section-title text-3xl">المشاريع والمهارات</h2>
-            <div class="space-y-12 text-right">
-                <div>
-                    <h3 class="text-xl font-bold text-teal-700 mb-4">التمثيل الإعلامي وإدارة الأجنحة التعريفية في الفعاليات</h3>
-                    <p class="text-slate-700 leading-relaxed">شاركت كممثلة رسمية لعدة أجنحة تعريفية في فعاليات جامعية، من أبرزها بوث المنتدى السعودي للإعلام، حيث توليت التعريف بالمبادرة، شرح أهدافها للطالبات والزوار، والتسويق لها بشكل مباشر. كما ساهمت في تنظيم وإدارة عدد من الأجنحة، والتفاعل مع الجمهور، والإجابة على استفساراتهم، مما عزز مهاراتي في الإقناع، التواصل الجماهيري، وإدارة الحضور الميداني.</p>
-                </div>
-                <div class="border-t border-teal-100 pt-8">
-                    <h3 class="text-xl font-bold text-teal-700 mb-4">القيادة الإعلامية وإدارة الفعاليات</h3>
-                    <p class="text-slate-700 leading-relaxed">قدت فريق مشروع ملتقى النقد الإعلامي، ووزعت المهام على أعضاء فريقي لضمان تنفيذ كل جزء بكفاءة. صممت العرض التقديمي الرسمي للملتقى، والشعار الرسمي، وكتيب الإرشادات لتسهيل متابعة الحضور للفعالية. قدمت الضيوف المميزين والترحيب بهم أمام الجمهور، من بينهم إعلاميون بارزون مثل ياسر الجنيد وعبدالله الحسيني. من خلال هذه التجربة، طورت مهاراتي في القيادة، التنظيم، التصميم، والتواصل الجماهيري، وشعرت بفخر كبير بمساهمتي في نجاح الفعالية بشكل احترافي.</p>
-                </div>
+        <!-- المشاريع والمهارات -->
+        <section id="projects" class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+            <div class="interactive-card p-10">
+                <div class="eng-badge mb-2">Event Leadership</div>
+                <h3 class="text-2xl font-black text-teal-900 mb-4">القيادة الإعلامية وإدارة الفعاليات</h3>
+                <p class="text-slate-600 text-sm leading-relaxed">
+                    قيادة فريق مشروع ملتقى النقد الإعلامي، تصميم الهوية البصرية، وتقديم ضيوف الملتقى مثل <strong>ياسر الجنيد وعبدالله الحسيني</strong>.
+                </p>
             </div>
-        </section>
-
-        <!-- القسم الاخير -->
-        <section id="campaigns" class="glass-card p-10 mb-12">
-            <h2 class="section-title text-3xl">إدارة الحملات الإعلامية الرقمية وإنتاج المحتوى</h2>
-            <p class="text-slate-700 leading-relaxed text-right">شاركت في حملة “صحتك بجوالك” بالتعاون مع الجامعة، حيث توليت إعداد الفيديو الترويجي بما في ذلك تسجيل الصوت والمونتاج. كما قمت بإعداد ملف خطة الحملة الكاملة، والذي تضمن خطة النشر، التايم لاين، والملخص التنفيذي. هذه التجربة عززت قدراتي في إنتاج المحتوى، التخطيط الاستراتيجي للحملات، وإدارة المشاريع الإعلامية الرقمية، وساهمت في نجاح الحملة بشكل احترافي.</p>
-        </section>
-
-        <!-- الأعمال المنشورة -->
-        <section class="glass-card p-10 mb-12 text-center">
-            <h2 class="text-2xl font-black text-teal-900 mb-8">الأعمال المنشورة</h2>
-            <div class="flex flex-wrap gap-4 justify-center">
-                <a href="https://shahdnow.sa/240411/" target="_blank" class="px-8 py-3 bg-teal-500 text-white rounded-xl font-bold hover:bg-teal-600 transition">حوار مستقبل العمارة</a>
-                <a href="https://shahdnow.sa/343274/" target="_blank" class="px-8 py-3 bg-teal-500 text-white rounded-xl font-bold hover:bg-teal-600 transition">معرض الدون بالرياض</a>
-                <a href="https://shahdnow.sa/336421/" target="_blank" class="px-8 py-3 bg-teal-500 text-white rounded-xl font-bold hover:bg-teal-600 transition">مقال يوم العلم</a>
+            <div class="interactive-card p-10">
+                <div class="eng-badge mb-2">Media Representation</div>
+                <h3 class="text-2xl font-black text-teal-900 mb-4">التمثيل الإعلامي (Media Booths)</h3>
+                <p class="text-slate-600 text-sm leading-relaxed">
+                    تمثيل رسمي في <strong>المنتدى السعودي للإعلام</strong>، التسويق للمبادرات، وتعزيز مهارات الإقناع والتواصل الجماهيري الميداني.
+                </p>
             </div>
         </section>
 
     </main>
 
-    <footer class="bg-teal-900 text-white py-16 text-center">
-        <h3 class="text-2xl font-bold mb-6">تواصل معي مهنياً</h3>
-        <a href="https://www.linkedin.com/in/norah-alnasser-b2026919b" target="_blank" class="inline-block bg-white text-teal-900 px-10 py-3 rounded-full font-black hover:scale-105 transition">LinkedIn Profile</a>
+    <footer class="bg-teal-900 text-white py-20 text-center">
+        <h2 class="text-4xl font-black mb-4">Let's Connect</h2>
+        <p class="eng-badge text-teal-300 mb-8">Professional Networking</p>
+        <a href="https://www.linkedin.com/in/norah-alnasser-b2026919b" target="_blank" class="bg-teal-500 hover:bg-teal-400 px-12 py-4 rounded-full font-black transition shadow-2xl inline-block">LinkedIn Profile</a>
     </footer>
 
     <script>
-        // أسماء الصور الدقيقة كما أرسلتِها
-        const photoList = [
-            "1717154562881.jfif",
-            "1747939033413.jfif",
-            "1752651031137.jfif",
-            "1753305027044.jfif",
-            "1753305711636.jfif",
-            "1753309213830.jfif",
-            "1771790167909.jfif",
-            "1b05dd96-c2f9-45a9-ad89-4d7da378ff7d.jfif",
-            "955641b3-a0d9-4230-b28b-4ea6498f2f31.jpeg",
-            "اللافتة الخارجية وشعارهم CMA.jfif"
+        // مصفوفة الصور بالأسماء الدقيقة التي أرسلتِها
+        const photoData = [
+            "1717154562881.jfif", "1747939033413.jfif", "1752651031137.jfif",
+            "1753305027044.jfif", "1753305711636.jfif", "1753309213830.jfif",
+            "1771790167909.jfif", "1b05dd96-c2f9-45a9-ad89-4d7da378ff7d.jfif",
+            "955641b3-a0d9-4230-b28b-4ea6498f2f31.jpeg", "اللافتة الخارجية وشعارهم CMA.jfif"
         ];
 
-        const container = document.getElementById('imageSlider');
-        // تكرار الصور مرتين للحركة المستمرة
-        [...photoList, ...photoList].forEach(img => {
-            const div = document.createElement('div');
-            div.className = 'slide';
-            div.innerHTML = `<img src="gallery/${img}" alt="Norah Work" onerror="this.src='https://via.placeholder.com/300x400/14b8a6/ffffff?text=Visual+Work'">`;
-            container.appendChild(div);
+        const slider = document.getElementById('dynamicSlider');
+        
+        // حل نهائي لمشكلة الصور: إذا لم تظهر الصورة، سيتم استبدالها بصورة "Placeholder" أنيقة بلون التيفاني
+        [...photoData, ...photoData].forEach(fileName => {
+            const slide = document.createElement('div');
+            slide.className = 'slide';
+            slide.innerHTML = `
+                <img src="gallery/${fileName}" 
+                     alt="Project" 
+                     onerror="this.src='https://placehold.co/300x400/14b8a6/ffffff?text=Media+Work'">
+            `;
+            slider.appendChild(slide);
         });
     </script>
 </body>
