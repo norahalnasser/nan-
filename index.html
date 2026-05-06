@@ -15,24 +15,21 @@
         body, html {
             margin: 0; padding: 0; background: var(--space-bg); color: white;
             font-family: 'Tajawal', sans-serif; overflow-x: hidden; scroll-behavior: smooth;
-            min-height: 100vh;
         }
 
-        /* خلفية النجوم الثابتة */
+        /* خلفية النجوم الثابتة دائماً */
         #stars-container { 
             position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
             z-index: -1; background: radial-gradient(ellipse at bottom, #1B2735 0%, #090A0F 100%); 
         }
         .star { position: absolute; background: white; border-radius: 50%; opacity: 0.5; animation: twinkle var(--duration) infinite; }
         @keyframes twinkle { 0%, 100% { opacity: 0.3; } 50% { opacity: 1; } }
-        .shooting-star { position: absolute; width: 2px; height: 2px; background: linear-gradient(90deg, white, transparent); animation: shoot var(--speed) linear infinite; }
-        @keyframes shoot { 0% { transform: translateX(0) translateY(0) rotate(-45deg); opacity: 1; } 100% { transform: translateX(-1000px) translateY(1000px) rotate(-45deg); opacity: 0; } }
 
         /* صفحة الترحيب */
         #welcome-screen {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: var(--space-bg); display: flex; flex-direction: column;
-            justify-content: center; align-items: center; z-index: 2000; transition: 0.8s ease-in-out;
+            justify-content: center; align-items: center; z-index: 2000; transition: 0.8s;
             text-align: center; padding: 20px;
         }
         .hook-text { font-size: 2.2em; color: white; margin-bottom: 15px; font-weight: bold; }
@@ -41,7 +38,7 @@
         .welcome-btn {
             padding: 16px 50px; font-size: 1.3em; background: transparent;
             color: var(--gold); border: 2px solid var(--gold); border-radius: 50px;
-            cursor: pointer; transition: 0.3s; box-shadow: 0 0 20px rgba(212, 175, 55, 0.2);
+            cursor: pointer; transition: 0.3s;
         }
         .welcome-btn:hover { background: var(--gold); color: var(--space-bg); box-shadow: 0 0 40px var(--gold); }
 
@@ -53,16 +50,27 @@
         h2 { color: var(--gold); border-right: 4px solid var(--gold); padding-right: 15px; margin-bottom: 25px; font-size: 1.8em; }
         h3 { color: #82aaff; margin-top: 30px; font-size: 1.5em; border-bottom: 1px solid rgba(130, 170, 255, 0.2); padding-bottom: 10px; }
 
-        .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin: 25px 0; }
-        .gallery img { width: 100%; height: 250px; object-fit: cover; border-radius: 15px; border: 1px solid rgba(255,255,255,0.2); display: block; }
+        /* تنسيق الصور لضمان ظهورها */
+        .gallery { display: flex; flex-wrap: wrap; gap: 20px; margin: 25px 0; justify-content: center; }
+        .gallery img { 
+            width: calc(50% - 20px); 
+            min-width: 250px; 
+            height: auto; 
+            max-height: 300px; 
+            object-fit: cover; 
+            border-radius: 15px; 
+            border: 2px solid rgba(255, 255, 255, 0.1); 
+            display: block; 
+        }
 
-        .link-btn { display: inline-block; padding: 12px 28px; color: var(--gold); border: 1px solid var(--gold); text-decoration: none; border-radius: 50px; margin: 10px 0; transition: 0.3s; font-size: 1em; text-align: center; }
+        .img-full { width: 100%; border-radius: 15px; margin: 20px 0; border: 2px solid rgba(255, 255, 255, 0.1); }
+
+        .link-btn { display: inline-block; padding: 12px 28px; color: var(--gold); border: 1px solid var(--gold); text-decoration: none; border-radius: 50px; margin: 10px 0; transition: 0.3s; text-align: center; }
         .link-btn:hover { background: var(--gold); color: var(--space-bg); font-weight: bold; }
 
         .linkedin-special { 
             background: var(--gold) !important; color: var(--space-bg) !important; font-weight: bold !important; 
-            display: block !important; width: fit-content; margin: 30px auto !important; 
-            box-shadow: 0 0 15px rgba(212, 175, 55, 0.4); font-size: 1.1em !important;
+            display: block !important; width: fit-content; margin: 30px auto !important; font-size: 1.1em !important;
         }
         
         ul { padding-right: 20px; }
@@ -95,40 +103,46 @@
             <h2>الخبرة العملية والأدوات المهنية</h2>
             <h3>إدارة الإعلام والتواصل الرقمي</h3>
             <ul>
-                <li><strong>تخطيط وصناعة المحتوى:</strong> ساهمت في إعداد وصياغة محتوى الحملات الإعلامية الرقمية، بما في ذلك حملة التقرير السنوي للهيئة 2024 وحملة برنامج تأهيل الخريجين.</li>
-                <li><strong>التنفيذ والمتابعة:</strong> شاركت في تنفيذ الخطط الإعلامية وجدولة المحتوى لضمان وصول الرسائل بدقة.</li>
-                <li><strong>الرصد والتحليل الرقمي:</strong> رصد وتحليل أداء الحسابات باستخدام أدوات مثل (Meltwater)، وإعداد تقارير الأداء وتصميم بنرات الموقع الخارجي للهيئة.</li>
+                <li>تخطيط وصناعة المحتوى: ساهمت في إعداد وصياغة محتوى الحملات الإعلامية الرقمية (تغريدات ومنشورات)، بما في ذلك حملة التقرير السنوي للهيئة 2024 وحملة برنامج تأهيل الخريجين.</li>
+                <li>التنفيذ والمتابعة: شاركت في تنفيذ الخطط الإعلامية وجدولة المحتوى لضمان وصول الرسائل الاتصالية للجمهور المستهدف بدقة.</li>
+                <li>الرصد والتحليل الرقمي: رصد وتحليل أداء حسابات الهيئة باستخدام أدوات مثل (Meltwater)، وإعداد تقارير أداء دورية وتصميم بنرات الموقع الخارجي.</li>
             </ul>
             <div class="gallery">
-                <img src="cma-1.jfif"> <img src="cma-2.jfif"> <img src="cma-logo.jfif"> <img src="cma-3.jfif">
+                <img src="cma-1.jfif" alt="صورة عمل 1">
+                <img src="cma-2.jfif" alt="صورة عمل 2">
+                <img src="cma-logo.jfif" alt="شعار الهيئة">
+                <img src="cma-3.jfif" alt="صورة عمل 3">
             </div>
         </div>
 
         <div class="card">
             <h2>المشاريع والمهارات</h2>
             <p><strong>تصميم الإعلانات والمنشورات الرقمية:</strong></p>
-            <img src="design-council-initiative.jfif" style="width: 100%; border-radius: 15px; margin-top: 10px;">
+            <img src="design-council-initiative.jfif" class="img-full" alt="مبادرة التصميم">
             
             <a href="https://www.linkedin.com/posts/norah-alnasser-b2026919b_aetaesaesaeqaexabraepaesaeuaeqaexabraepaesaenaehaesaepaetaey-activity-7269363536244457472-7TxK?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAC7YsQgBuv2OKW24zZKRGJ0P0Ya25xjtiI0" class="link-btn linkedin-special" target="_blank">للمزيد من المنشورات والتصاميم استكشف هنا في لينكدان 🔗</a>
 
             <h3>التمثيل الإعلامي وإدارة الأجنحة التعريفية</h3>
-            <p>شاركت كممثلة رسمية لعدة أجنحة تعريفية، من أبرزها بوث المنتدى السعودي للإعلام، حيث توليت التعريف بالمبادرة والتسويق المباشر لها.</p>
+            <p>شاركت كممثلة رسمية لعدة أجنحة تعريفية، من أبرزها بوث المنتدى السعودي للإعلام، حيث توليت التعريف بالمبادرة والتسويق لها بشكل مباشر.</p>
             <div class="gallery">
-                <img src="council-meeting-session.jfif"> <img src="uni-group-graduation.jfif"> <img src="media-forum-2.jfif">
+                <img src="council-meeting-session.jfif" alt="جلسة اجتماع">
+                <img src="uni-group-graduation.jfif" alt="تخرج المجموعة">
+                <img src="media-forum-2.jfif" alt="منتدى الإعلام">
             </div>
         </div>
 
         <div class="card">
             <h2>القيادة الإعلامية وإدارة الفعاليات</h2>
-            <p>قدت فريق مشروع ملتقى النقد الإعلامي، وصممت العرض التقديمي والشعار الرسمي، وقدمت الضيوف الإعلاميين مثل ياسر الجنيد وعبدالله الحسيني.</p>
+            <p>قدت فريق مشروع ملتقى النقد الإعلامي، وصممت العرض التقديمي والشعار الرسمي، وقدمت ضيوفاً بارزين مثل ياسر الجنيد وعبدالله الحسيني.</p>
             <div class="gallery">
-                <img src="criticism-event-2.jfif"> <img src="criticism-event.jfif">
+                <img src="criticism-event-2.jfif" alt="ملتقى النقد 2">
+                <img src="criticism-event.jfif" alt="ملتقى النقد">
             </div>
         </div>
 
         <div class="card">
             <h2>إدارة الحملات الإعلامية الرقمية</h2>
-            <p>شاركت في حملة “صحتك بجوالك”، وتوليت إعداد الفيديو الترويجي والمونتاج وكامل خطة النشر.</p>
+            <p>شاركت في حملة “صحتك بجوالك” وتوليت إعداد الفيديو الترويجي والمونتاج وكامل خطة النشر.</p>
             <div style="text-align: center;">
                  <a href="https://drive.google.com/drive/folders/1c_Qlr3EnmtASEf1hPSHo8NLYl6KyoH04" class="link-btn" target="_blank">🔗 رابط ملف الحملة الكامل (Google Drive)</a>
             </div>
@@ -136,13 +150,14 @@
 
         <div class="card">
             <h2>الأعمال المنشورة</h2>
-            <p><strong>1- خبر صحفي:</strong> معرض الدون بالرياض. <a href="https://shahdnow.sa/240268/" class="link-btn" target="_blank">رابط الخبر</a></p>
-            <p><strong>2- حوار صحفي:</strong> مستقبل فنون العمارة. <a href="https://shahdnow.sa/240411/" class="link-btn" target="_blank">رابط الحوار</a></p>
-            <p><strong>3- مقال:</strong> “راية لا تُنكّس”. <a href="https://shahdnow.sa/336421/" class="link-btn" target="_blank">رابط المقال</a></p>
+            <p>1- خبر صحفي: افتتاح معرض الدون بالرياض. <a href="https://shahdnow.sa/240268/" class="link-btn" target="_blank">رابط الخبر</a></p>
+            <p>2- حوار صحفي: مستقبل فنون العمارة بالمملكة. <a href="https://shahdnow.sa/240411/" class="link-btn" target="_blank">رابط الحوار</a></p>
+            <p>3- مقال: “راية لا تُنكّس”. <a href="https://shahdnow.sa/336421/" class="link-btn" target="_blank">رابط المقال</a></p>
         </div>
 
         <footer class="card" style="text-align: center; border: none; background: transparent;">
-            <p><strong>ايميل:</strong> norahabdul15@gmail.com | <strong>لينكدان:</strong> Norah Alnasser</p>
+            <p>اسعد بالتعاون والعمل معكم</p>
+            <p>ايميل: norahabdul15@gmail.com | لينكدان: Norah Alnasser</p>
         </footer>
     </div>
 
@@ -152,6 +167,7 @@
             setTimeout(() => {
                 document.getElementById('welcome-screen').style.display = 'none';
                 document.getElementById('mainContent').style.display = 'block';
+                window.scrollTo(0, 0);
             }, 800);
         }
 
